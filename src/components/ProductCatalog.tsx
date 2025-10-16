@@ -26,15 +26,16 @@ import { addToCart } from '../store/cartSlice';
 import { setSearchQuery, setSortBy } from '../store/filtersSlice';
 import { Product } from '../types';
 
-// Base de productos ampliada (fuera del componente para evitar re-renders)
+// Base de productos ampliada con nuevas categorías
 const allProducts: Product[] = [
+  // MUJER
   {
     id: '1',
     name: 'Vestido Elegante Negro',
     price: 2499,
     description: 'Vestido de noche elegante con detalles dorados',
-    image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500',
-    category: 'Vestidos',
+    image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&h=600&fit=crop',
+    category: 'mujer',
     stock: 10,
   },
   {
@@ -42,8 +43,8 @@ const allProducts: Product[] = [
     name: 'Blusa de Seda Premium',
     price: 1899,
     description: 'Blusa de seda italiana con acabados delicados',
-    image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=500',
-    category: 'Blusas',
+    image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=500&h=600&fit=crop',
+    category: 'mujer',
     stock: 15,
   },
   {
@@ -51,8 +52,8 @@ const allProducts: Product[] = [
     name: 'Abrigo de Lana Luxury',
     price: 3999,
     description: 'Abrigo de lana merino con forro de seda',
-    image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=500',
-    category: 'Abrigos',
+    image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=500&h=600&fit=crop',
+    category: 'mujer',
     stock: 8,
   },
   {
@@ -60,81 +61,177 @@ const allProducts: Product[] = [
     name: 'Pantalón Palazzo Dorado',
     price: 1599,
     description: 'Pantalón palazzo con detalles metálicos',
-    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500',
-    category: 'Pantalones',
+    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500&h=600&fit=crop',
+    category: 'mujer',
     stock: 12,
   },
   {
     id: '5',
-    name: 'Chaqueta de Cuero Premium',
-    price: 4299,
-    description: 'Chaqueta de cuero genuino con acabados artesanales',
-    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500',
-    category: 'Chaquetas',
-    stock: 6,
+    name: 'Vestido Cóctel Rojo',
+    price: 2899,
+    description: 'Vestido de cóctel con escote en V',
+    image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&h=600&fit=crop',
+    category: 'mujer',
+    stock: 7,
   },
   {
     id: '6',
     name: 'Falda Plisada Elegante',
     price: 1299,
     description: 'Falda plisada midi con cintura alta',
-    image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500',
-    category: 'Faldas',
+    image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500&h=600&fit=crop',
+    category: 'mujer',
     stock: 20,
   },
+  
+  // HOMBRE
   {
     id: '7',
-    name: 'Vestido Cóctel Rojo',
-    price: 2899,
-    description: 'Vestido de cóctel con escote en V',
-    image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500',
-    category: 'Vestidos',
-    stock: 7,
+    name: 'Traje Ejecutivo Negro',
+    price: 5499,
+    description: 'Traje de corte italiano en lana premium',
+    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&h=600&fit=crop',
+    category: 'hombre',
+    stock: 8,
   },
   {
     id: '8',
-    name: 'Blazer Estructurado',
-    price: 2199,
-    description: 'Blazer de corte italiano con detalles dorados',
-    image: 'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=500',
-    category: 'Chaquetas',
-    stock: 14,
+    name: 'Camisa Oxford Blanca',
+    price: 1299,
+    description: 'Camisa de algodón egipcio con corte slim',
+    image: 'https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=500&h=600&fit=crop',
+    category: 'hombre',
+    stock: 25,
   },
   {
     id: '9',
-    name: 'Pantalón de Vestir Slim',
-    price: 1399,
-    description: 'Pantalón de vestir con corte slim fit',
-    image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500',
-    category: 'Pantalones',
-    stock: 18,
+    name: 'Chaqueta de Cuero Premium',
+    price: 4299,
+    description: 'Chaqueta de cuero genuino con acabados artesanales',
+    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=600&fit=crop',
+    category: 'hombre',
+    stock: 6,
   },
   {
     id: '10',
-    name: 'Blusa Bordada Floral',
-    price: 1699,
-    description: 'Blusa con bordados florales hechos a mano',
-    image: 'https://images.unsplash.com/photo-1564257577-617ccefddccd?w=500',
-    category: 'Blusas',
-    stock: 11,
+    name: 'Pantalón Chino Beige',
+    price: 1599,
+    description: 'Pantalón chino de algodón con ajuste perfecto',
+    image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&h=600&fit=crop',
+    category: 'hombre',
+    stock: 18,
   },
   {
     id: '11',
-    name: 'Abrigo Largo Beige',
-    price: 4599,
-    description: 'Abrigo largo de cachemira con cinturón',
-    image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500',
-    category: 'Abrigos',
-    stock: 5,
+    name: 'Blazer Estructurado Azul',
+    price: 2199,
+    description: 'Blazer de corte italiano con detalles elegantes',
+    image: 'https://images.unsplash.com/photo-1593030668990-c57c41f7b152?w=500&h=600&fit=crop',
+    category: 'hombre',
+    stock: 14,
   },
   {
     id: '12',
-    name: 'Vestido Largo Estampado',
-    price: 2699,
-    description: 'Vestido largo con estampado floral exclusivo',
-    image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500',
-    category: 'Vestidos',
-    stock: 9,
+    name: 'Suéter de Cachemira',
+    price: 2899,
+    description: 'Suéter de cachemira 100% con cuello en V',
+    image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&h=600&fit=crop',
+    category: 'hombre',
+    stock: 10,
+  },
+  
+  // NIÑOS
+  {
+    id: '13',
+    name: 'Conjunto Casual Niña',
+    price: 899,
+    description: 'Conjunto de blusa y falda con estampado floral',
+    image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=500&h=600&fit=crop',
+    category: 'niños',
+    stock: 15,
+  },
+  {
+    id: '14',
+    name: 'Camisa Formal Niño',
+    price: 799,
+    description: 'Camisa de vestir con pantalón incluido',
+    image: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=500&h=600&fit=crop',
+    category: 'niños',
+    stock: 20,
+  },
+  {
+    id: '15',
+    name: 'Vestido de Fiesta Niña',
+    price: 1499,
+    description: 'Vestido elegante con detalles en encaje',
+    image: 'https://images.unsplash.com/photo-1621452773781-0f992fd1f5cb?w=500&h=600&fit=crop',
+    category: 'niños',
+    stock: 12,
+  },
+  {
+    id: '16',
+    name: 'Chaqueta Acolchada Niño',
+    price: 1299,
+    description: 'Chaqueta térmica con capucha desmontable',
+    image: 'https://images.unsplash.com/photo-1519238326581-b5d7e4e26b06?w=500&h=600&fit=crop',
+    category: 'niños',
+    stock: 18,
+  },
+  
+  // ACCESORIOS
+  {
+    id: '17',
+    name: 'Bolso de Cuero Italiano',
+    price: 3499,
+    description: 'Bolso artesanal de cuero genuino con herrajes dorados',
+    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&h=600&fit=crop',
+    category: 'accesorios',
+    stock: 8,
+  },
+  {
+    id: '18',
+    name: 'Reloj de Diseñador',
+    price: 4999,
+    description: 'Reloj suizo con correa de cuero premium',
+    image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=500&h=600&fit=crop',
+    category: 'accesorios',
+    stock: 5,
+  },
+  {
+    id: '19',
+    name: 'Bufanda de Seda',
+    price: 899,
+    description: 'Bufanda de seda natural con estampado exclusivo',
+    image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=500&h=600&fit=crop',
+    category: 'accesorios',
+    stock: 25,
+  },
+  {
+    id: '20',
+    name: 'Cinturón de Cuero Trenzado',
+    price: 1299,
+    description: 'Cinturón artesanal con hebilla de plata',
+    image: 'https://images.unsplash.com/photo-1624222247344-550fb60583aa?w=500&h=600&fit=crop',
+    category: 'accesorios',
+    stock: 15,
+  },
+  {
+    id: '21',
+    name: 'Gafas de Sol Premium',
+    price: 2499,
+    description: 'Gafas con lentes polarizados y marco de acetato',
+    image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&h=600&fit=crop',
+    category: 'accesorios',
+    stock: 12,
+  },
+  {
+    id: '22',
+    name: 'Joyería de Diseñador',
+    price: 1899,
+    description: 'Set de collar y aretes en plata esterlina',
+    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop',
+    category: 'accesorios',
+    stock: 10,
   },
 ];
 
@@ -325,15 +422,30 @@ const ProductCatalog: React.FC = () => {
                       flexDirection: 'column',
                       position: 'relative',
                       overflow: 'hidden',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: 'translateY(-8px)',
+                        boxShadow: 8,
+                      },
                     }}
                   >
-                    <Box sx={{ position: 'relative', overflow: 'hidden' }}>
+                    <Box 
+                      sx={{ 
+                        position: 'relative', 
+                        overflow: 'hidden',
+                        height: 350,
+                        bgcolor: 'grey.100',
+                      }}
+                    >
                       <CardMedia
                         component="img"
                         height="350"
                         image={product.image}
                         alt={product.name}
                         sx={{
+                          objectFit: 'cover',
+                          width: '100%',
+                          height: '100%',
                           transition: 'transform 0.5s ease',
                           '&:hover': {
                             transform: 'scale(1.1)',
@@ -354,13 +466,22 @@ const ProductCatalog: React.FC = () => {
                       />
                     </Box>
 
-                    <CardContent sx={{ flexGrow: 1 }}>
+                    <CardContent 
+                      sx={{ 
+                        flexGrow: 1,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        minHeight: 220,
+                        p: 3,
+                      }}
+                    >
                       <Typography
                         variant="caption"
                         sx={{
                           color: 'secondary.main',
                           fontWeight: 600,
                           letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
                         }}
                       >
                         {product.category}
@@ -374,6 +495,11 @@ const ProductCatalog: React.FC = () => {
                           mb: 1,
                           fontWeight: 600,
                           color: 'primary.main',
+                          minHeight: 60,
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
                         }}
                       >
                         {product.name}
@@ -382,41 +508,57 @@ const ProductCatalog: React.FC = () => {
                       <Typography
                         variant="body2"
                         color="text.secondary"
-                        sx={{ mb: 2 }}
+                        sx={{ 
+                          mb: 2,
+                          flexGrow: 1,
+                          minHeight: 40,
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                        }}
                       >
                         {product.description}
                       </Typography>
                       
-                      <Typography
-                        variant="h5"
-                        sx={{
-                          fontWeight: 700,
-                          color: 'primary.main',
-                        }}
-                      >
-                        ${product.price.toLocaleString('es-MX')} MXN
-                      </Typography>
+                      <Box>
+                        <Typography
+                          variant="h5"
+                          sx={{
+                            fontWeight: 700,
+                            color: 'primary.main',
+                          }}
+                        >
+                          ${product.price.toLocaleString('es-MX')} MXN
+                        </Typography>
 
-                      <Typography
-                        variant="caption"
-                        color="text.secondary"
-                        sx={{ display: 'block', mt: 1 }}
-                      >
-                        {product.stock} disponibles
-                      </Typography>
+                        <Typography
+                          variant="caption"
+                          color="text.secondary"
+                          sx={{ display: 'block', mt: 1 }}
+                        >
+                          {product.stock} disponibles
+                        </Typography>
+                      </Box>
                     </CardContent>
 
-                    <CardActions sx={{ p: 2, pt: 0 }}>
+                    <CardActions sx={{ p: 3, pt: 0 }}>
                       <Button
                         fullWidth
                         variant="contained"
                         startIcon={<AddShoppingCart />}
                         onClick={() => handleAddToCart(product)}
+                        disabled={product.stock === 0}
                         sx={{
                           backgroundColor: 'primary.main',
+                          py: 1.5,
+                          fontWeight: 600,
+                          fontSize: '0.95rem',
                           '&:hover': {
-                            backgroundColor: 'primary.dark',
+                            backgroundColor: 'secondary.main',
+                            color: 'primary.main',
                             transform: 'translateY(-2px)',
+                            boxShadow: 4,
                           },
                           transition: 'all 0.3s ease',
                         }}
