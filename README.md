@@ -58,39 +58,65 @@ git clone https://github.com/Henry280000/Pagina-web-Montoya.git
 cd Pagina-web-Montoya
 ```
 
-#### 2. Configuración del Frontend
+#### 2. Inicio Rápido (Recomendado)
 
+**Ejecutar Frontend + Backend juntos:**
+
+En Unix/Linux/macOS:
 ```bash
-# Instalar dependencias
-npm install
+./start.sh
+```
 
-# Iniciar servidor de desarrollo
+En Windows:
+```bash
+start.bat
+```
+
+Esto iniciará automáticamente ambos servidores:
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:5000`
+
+#### 3. Inicio Manual
+
+**Opción A: Solo Frontend**
+
+Unix/Linux/macOS:
+```bash
+./start-frontend.sh
+```
+
+Windows:
+```bash
+start-frontend.bat
+```
+
+O manualmente:
+```bash
+npm install
 npm start
 ```
 
-La aplicación estará disponible en `http://localhost:3000`
+**Opción B: Solo Backend**
 
-#### 3. Configuración del Backend
-
+Unix/Linux/macOS:
 ```bash
-# Navegar al directorio backend
-cd backend
-
-# Crear entorno virtual
-python3 -m venv venv
-
-# Activar entorno virtual
-source venv/bin/activate  # macOS/Linux
-# venv\Scripts\activate   # Windows
-
-# Instalar dependencias
-pip install -r requirements.txt
-
-# Iniciar servidor Flask
-python app.py
+./start-backend.sh
 ```
 
-El servidor backend estará disponible en `http://localhost:5000`
+Windows:
+```bash
+start-backend.bat
+```
+
+O manualmente:
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate  # macOS/Linux
+# venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+python app.py
+```
 
 ### Scripts Disponibles
 
@@ -192,39 +218,65 @@ git clone https://github.com/Henry280000/Pagina-web-Montoya.git
 cd Pagina-web-Montoya
 ```
 
-#### 2. Frontend Setup
+#### 2. Quick Start (Recommended)
 
+**Run Frontend + Backend together:**
+
+On Unix/Linux/macOS:
 ```bash
-# Install dependencies
-npm install
+./start.sh
+```
 
-# Start development server
+On Windows:
+```bash
+start.bat
+```
+
+This will automatically start both servers:
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:5000`
+
+#### 3. Manual Start
+
+**Option A: Frontend Only**
+
+Unix/Linux/macOS:
+```bash
+./start-frontend.sh
+```
+
+Windows:
+```bash
+start-frontend.bat
+```
+
+Or manually:
+```bash
+npm install
 npm start
 ```
 
-The application will be available at `http://localhost:3000`
+**Option B: Backend Only**
 
-#### 3. Backend Setup
-
+Unix/Linux/macOS:
 ```bash
-# Navigate to backend directory
-cd backend
-
-# Create virtual environment
-python3 -m venv venv
-
-# Activate virtual environment
-source venv/bin/activate  # macOS/Linux
-# venv\Scripts\activate   # Windows
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Start Flask server
-python app.py
+./start-backend.sh
 ```
 
-The backend server will be available at `http://localhost:5000`
+Windows:
+```bash
+start-backend.bat
+```
+
+Or manually:
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate  # macOS/Linux
+# venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+python app.py
+```
 
 ### Available Scripts
 
